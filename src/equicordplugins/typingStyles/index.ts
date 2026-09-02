@@ -6,6 +6,7 @@
 
 import { addMessagePreSendListener, removeMessagePreSendListener } from "@api/MessageEvents";
 import { definePluginSettings } from "@api/Settings";
+import { EquicordDevs } from "@utils/constants";
 import definePlugin, { OptionType } from "@utils/types";
 
 type TypingStyle = "off" | "lowercase" | "uppercase" | "titlecase" | "sentencecase" | "alternating";
@@ -113,7 +114,7 @@ export function restyle(text: string, style: TypingStyle): string {
 export default definePlugin({
     name: "TypingStyles",
     description: "Restyles every message you send: lowercase, UPPERCASE, Title Case, Sentence case or aLtErNaTiNg",
-    authors: [{ name: "xocat", id: 1525464078783615083n }],
+    authors: [EquicordDevs.xocat],
     settings,
 
     start() {

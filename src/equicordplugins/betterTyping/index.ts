@@ -622,7 +622,7 @@ export default definePlugin({
     dependencies: ["MessageEventsAPI"],
     tags: ["Chat", "Privacy", "Utility"],
     authors: [
-        { name: "xocat", id: 1525464078783615083n },
+        EquicordDevs.xocat,
         Devs.adryd,
         Devs.thororen,
         Devs.Samwich,
