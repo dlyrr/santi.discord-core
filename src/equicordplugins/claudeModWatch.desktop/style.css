@@ -1,0 +1,85 @@
+.vc-claude-modwatch-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.vc-claude-modwatch-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.vc-claude-modwatch-rules {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.vc-claude-modwatch-flags {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-bottom: 8px;
+}
+
+.vc-claude-modwatch-flag {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 12px;
+    border-radius: 8px;
+    background: var(--background-secondary);
+    border-left: 3px solid var(--background-modifier-accent);
+}
+
+.vc-claude-modwatch-flag-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.vc-claude-modwatch-rule {
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+.vc-claude-modwatch-quote {
+    margin: 2px 0;
+    padding: 6px 10px;
+    border-left: 3px solid var(--background-modifier-accent);
+    color: var(--text-normal);
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.vc-claude-modwatch-flag-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 2px;
+}
+
+.vc-claude-modwatch-severity {
+    flex-shrink: 0;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    background: var(--background-modifier-accent);
+    color: var(--text-muted);
+}
+
+/* Borderline calls should look like a shrug, serious ones should not. */
+.vc-claude-modwatch-severity-3 {
+    background: var(--info-warning-background, var(--background-modifier-accent));
+    color: var(--info-warning-text, var(--text-normal));
+}
+
+.vc-claude-modwatch-severity-4,
+.vc-claude-modwatch-severity-5 {
+    background: var(--info-danger-background, var(--background-modifier-accent));
+    color: var(--info-danger-text, var(--text-normal));
+}

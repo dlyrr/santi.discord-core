@@ -1,0 +1,96 @@
+.vc-ollama-suggest-wrapper {
+    position: relative;
+    display: flex;
+}
+
+.vc-ollama-suggest-drafting {
+    display: block;
+    object-fit: contain;
+}
+
+.vc-ollama-suggest-loading {
+    animation: vc-ollama-suggest-pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes vc-ollama-suggest-pulse {
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.35;
+    }
+}
+
+/* Several drafts can be open at once, so they stack upward from the message box. */
+.vc-ollama-suggest-stack {
+    position: fixed;
+    z-index: 1002;
+    transform: translate(-100%, -100%);
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.vc-ollama-suggest-bubble {
+    position: relative;
+    display: flex;
+    width: max-content;
+    max-width: 340px;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px 12px;
+    border: 1px solid var(--background-modifier-accent);
+    border-radius: 8px;
+    background: var(--background-floating);
+    box-shadow: var(--elevation-high);
+}
+
+/* Only the newest one, the one nearest the box, gets the tail. */
+.vc-ollama-suggest-bubble:last-child::after {
+    position: absolute;
+    right: 14px;
+    top: 100%;
+    border: 6px solid transparent;
+    border-top-color: var(--background-floating);
+    content: "";
+}
+
+.vc-ollama-suggest-bubble-text {
+    max-height: 180px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.vc-ollama-suggest-bubble-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 6px;
+}
+
+.vc-ollama-suggest-hint {
+    margin-right: auto;
+    color: var(--text-muted);
+    font-size: 11px;
+}
+
+.vc-ollama-suggest-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.vc-ollama-suggest-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.vc-ollama-suggest-about {
+    color: var(--text-muted);
+}

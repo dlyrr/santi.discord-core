@@ -1,3 +1,19 @@
+# santi.discord
+
+[Equicord](https://github.com/Equicord/Equicord), plus xocat's plugins built in, so they survive release builds and the installer:
+
+| Plugin | What it does |
+| --- | --- |
+| **BetterTyping** | ClearURLs + PolishWording + fx embed fixer + bare-domain linkifying + typing styles ([repo](https://github.com/dlyrr/BetterTyping)) |
+| **TypingStyles** | Restyle every message: lowercase, UPPERCASE, Title Case, Sentence case, aLtErNaTiNg ([repo](https://github.com/dlyrr/TypingStyles)). Already inside BetterTyping; enable one or the other |
+| **ClaudeCollection** | Makes Discord look and feel like Claude Desktop |
+| **ClaudeModWatch** | Local-only moderation watch through Ollama |
+| **OllamaReplySuggest** | Reply suggestions drafted by a local Ollama model |
+
+They live in `src/equicordplugins/`. Everything below is Equicord's own README; keep `upstream` pointed at Equicord/Equicord and merge it in to stay current.
+
+---
+
 # [<img src="./browser/icon.png" width="40" align="left" alt="Equicord">](https://github.com/Equicord/Equicord) Equicord
 
 [![Equibop](https://img.shields.io/badge/Equibop-grey?style=flat)](https://github.com/Equicord/Equibop)
