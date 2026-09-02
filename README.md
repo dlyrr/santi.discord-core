@@ -1,6 +1,6 @@
-# santi.discord
+# santi.discord-core
 
-[Equicord](https://github.com/Equicord/Equicord), plus xocat's plugins built in, so they survive release builds and the installer:
+The client mod behind [santi.discord](https://github.com/dlyrr/santi.discord): [Equicord](https://github.com/Equicord/Equicord) with xocat's plugins built in, so they survive release builds. Every push to `main` rebuilds the `latest` release, which the santi.discord app downloads on first launch.
 
 | Plugin | What it does |
 | --- | --- |
