@@ -610,6 +610,14 @@ function processMessage(input: string): string {
     });
 
     text = processLinks(text);
+
+    // Links are not prose: stash them in the same placeholder list so wording
+    // and restyling can't inject apostrophes or change their case.
+    text = text.replace(URL_REGEX, match => {
+        codeBlocks.push(match);
+        return `__CODE_BLOCK_${codeBlocks.length - 1}__`;
+    });
+
     text = processWording(text);
     text = restyle(text, settings.store.typingStyle as TypingStyle);
 
