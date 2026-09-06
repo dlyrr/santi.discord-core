@@ -296,6 +296,10 @@ function linkifyDomains(text: string, mode: LinkifyMode): string {
 // embed-suppressed links can be recognised (and their host left alone).
 const URL_REGEX = /(<?)(https?:\/\/[^\s<]+[^<.,:;"'>)|\]\s])/g;
 
+// Discord's own links (message jumps, invites, CDN) embed fine and break when
+// touched, and Spotify playlist links lose their embed on the fixer host.
+const LEAVE_ALONE = /^https?:\/\/([^/?#:]*\.)?(discord\.com|discordapp\.com|discord\.gg|discordapp\.net|discord\.media)(\/|$)|^https?:\/\/[^/?#:]*spotify[^/?#:]*\/(intl-[a-z-]+\/)?playlist\//i;
+
 function processLinks(text: string): string {
     text = linkifyDomains(text, settings.store.linkifyDomains as LinkifyMode);
     if (!/https?:\/\//.test(text)) return text;
@@ -304,6 +308,7 @@ function processLinks(text: string): string {
     if (!clearTrackingParams && !fixEmbeds) return text;
 
     return text.replace(URL_REGEX, (_, bracket: string, url: string) => {
+        if (LEAVE_ALONE.test(url)) return bracket + url;
         let out = url;
         // Tracking rules are keyed on the original host, so strip params first
         // and only then swap the host.
