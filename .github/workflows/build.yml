@@ -3,6 +3,9 @@ on:
     push:
         branches:
             - main
+    schedule:
+        # Pull in upstream Equicord and cut a fresh core release every 6 hours
+        - cron: "0 */6 * * *"
     workflow_dispatch:
 
 env:
@@ -19,6 +22,18 @@ jobs:
 
         steps:
             - uses: actions/checkout@v7
+              with:
+                  fetch-depth: 0
+
+            - name: Merge upstream Equicord
+              if: ${{ github.event_name == 'schedule' }}
+              run: |
+                  git config user.name "dlyrr"
+                  git config user.email "support@xocat.online"
+                  git remote add upstream https://github.com/Equicord/Equicord.git || true
+                  git fetch upstream main
+                  git merge --no-edit upstream/main
+                  git push origin HEAD:main
 
             - uses: pnpm/action-setup@v6
 
