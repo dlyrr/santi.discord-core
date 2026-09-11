@@ -26,7 +26,7 @@ jobs:
                   fetch-depth: 0
 
             - name: Merge upstream Equicord
-              if: ${{ github.event_name == 'schedule' }}
+              if: ${{ github.event_name != 'push' }}
               run: |
                   git config user.name "dlyrr"
                   git config user.email "support@xocat.online"
@@ -84,3 +84,9 @@ jobs:
             - name: Upload santi.discord-core build
               run: |
                   gh release upload latest --clobber dist/release/*
+
+            # The in-client updater reads the commit hash off the end of the release
+            # title and compares it to the one baked into the asar. Without this it
+            # never matches, so Equicord "updates" and asks to restart on every launch.
+            - name: Stamp the release with the built commit
+              run: gh release edit latest --title "Equicord $(git rev-parse HEAD)"
